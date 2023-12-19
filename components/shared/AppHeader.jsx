@@ -7,6 +7,7 @@ import HireMeModal from '../HireMeModal';
 import logoLight from '../../public/images/logo-light.svg';
 import logoDark from '../../public/images/logo-dark.svg';
 import useThemeSwitcher from '../../hooks/useThemeSwitcher';
+import GoogleAuthButton from './GoogleAuthButton';
 
 function AppHeader() {
 	const [showMenu, setShowMenu] = useState(false);
@@ -164,13 +165,7 @@ function AppHeader() {
 				{/* Header right section buttons */}
 				<div className="hidden sm:flex justify-between items-center flex-col md:flex-row">
 					<div className="hidden md:flex">
-						<button
-							onClick={showHireMeModal}
-							className="text-md font-general-medium bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-md px-5 py-2.5 duration-300"
-							aria-label="Hire Me Button"
-						>
-							Hire Me
-						</button>
+						<GoogleAuthButton/>
 					</div>
 
 					{/* Theme switcher large screen */}
