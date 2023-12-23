@@ -57,34 +57,25 @@ function AboutMeBio() {
 
           <Carousel imageArray={myImageArray} />
           <div className="flex text-xs space-x-4">
-            {aboutInfo.map((info) => (
-              <div className="flex flex-col">
-                <p className="text-ternary-dark dark:text-gray-600 text-lg">
-                  Email
-                </p>
+            <div className="flex flex-col">
+              <p className="text-ternary-dark dark:text-gray-600 text-lg">
+                Email
+              </p>
 
-                <p
-                  className="mb-4 text-ternary-dark dark:text-ternary-light"
-                  key={info.id}
-                >
-                  {info.email}
-                </p>
-              </div>
-            ))}
-            {aboutInfo.map((info) => (
-              <div className="flex flex-col">
-                <p className="text-ternary-dark dark:text-gray-600 text-lg">
-                  Phone
-                </p>
+              <p className="mb-4 text-ternary-dark dark:text-ternary-light">
+                sirenuix041622@gmail.com
+              </p>
+            </div>
 
-                <p
-                  className="mb-4 text-ternary-dark dark:text-ternary-light"
-                  key={info.id}
-                >
-                  {info.phone}
-                </p>
-              </div>
-            ))}
+            <div className="flex flex-col">
+              <p className="text-ternary-dark dark:text-gray-600 text-lg">
+                Phone
+              </p>
+
+              <p className="mb-4 text-ternary-dark dark:text-ternary-light">
+                +91 6382102514
+              </p>
+            </div>
           </div>
         </div>
       </div>
