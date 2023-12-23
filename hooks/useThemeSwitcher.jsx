@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 
 const useThemeSwitcher = () => {
 	const [theme, setTheme] = useState(
-		typeof window !== 'undefined' ? localStorage.theme : ''
+		typeof window !== 'undefined' ? localStorage.theme : 'dark'
 	);
-	const activeTheme = theme === 'dark' ? 'light' : 'dark';
+	const activeTheme = theme === 'dark';
+
+	//const activeTheme = theme === 'dark' ? 'light' : 'dark';
 
 	useEffect(() => {
 		const root = window.document.documentElement;
