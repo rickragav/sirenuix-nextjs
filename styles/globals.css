@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html,
 body {
 	padding: 0;
@@ -245,3 +246,29 @@ a {
 		opacity: 0.5;
 	}
 }
+
+
+/* components/BackgroundCarousel.module.css */
+.carousel-container {
+	position: relative;
+	background-color: rgba(255, 255, 255, 0.8); /* Adjust the transparency here */
+	padding: 20px; /* Adjust the padding as needed */
+	border-radius: 10px; /* Optional: Add rounded corners */
+	margin: 20px 0; /* Optional: Add margin as needed */
+  }
+  
+  .carousel-container .slick-slider {
+	position: relative;
+	z-index: 1; /* Ensure the carousel is on top of the background */
+  }
+
+  /* components/BounceBall.css */
+.ball {
+	width: 50px;
+	height: 50px;
+	background-color: #0099ff; /* Blue color */
+	border-radius: 50%; /* Make it round */
+	cursor: pointer;
+  }
+  
+  

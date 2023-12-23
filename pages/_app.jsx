@@ -3,6 +3,8 @@ import { AnimatePresence } from "framer-motion";
 import DefaultLayout from "../components/layout/DefaultLayout";
 import UseScrollToTop from "../hooks/useScrollToTop";
 import { SessionProvider } from "next-auth/react"
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function MyApp({ Component, pageProps }) {
   return (
