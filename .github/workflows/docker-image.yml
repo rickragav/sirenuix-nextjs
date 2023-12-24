@@ -19,7 +19,7 @@ jobs:
 
     - name: Login to Docker Hub
       run: |
-        echo sirenuix | docker login -u sirenuix --password-stdin
+        echo sirenuix | docker login -u sirenuix -p Apple@041622
 
     - name: Push Docker Image to Docker Hub
       run: docker push sirenuix:$(date +%s)  
