@@ -22,4 +22,4 @@ jobs:
         echo sirenuix | docker login -u sirenuix -p Apple@041622
 
     - name: Push Docker Image to Docker Hub
-      run: docker push sirenuix/nextjs-ui:$(date +%s)
+      run: docker push sirenuix/nextjs-ui
