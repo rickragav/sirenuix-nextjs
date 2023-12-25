@@ -16,7 +16,6 @@ function AppHeader() {
   const router = useRouter();
 
   const isActive = (path) => {
-    
     return router.pathname === path;
   };
 
@@ -47,7 +46,7 @@ function AppHeader() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       id="nav"
-      className="sm:container sm:mx-auto"
+      className="sm:container sm:mx-auto capitalize"
     >
       {/* Header */}
       <div className="z-10 max-w-screen-lg xl:max-w-screen-xl block sm:flex sm:justify-between sm:items-center py-6">
@@ -60,16 +59,12 @@ function AppHeader() {
                   src={logoDark}
                   className="w-36 cursor-pointer"
                   alt="Dark Logo"
-                  width={150}
-                  height={120}
                 />
               ) : (
                 <Image
                   src={logoLight}
                   className="w-36 cursor-pointer"
                   alt="Dark Logo"
-                  width={150}
-                  height={120}
                 />
               )}
             </Link>
@@ -77,15 +72,16 @@ function AppHeader() {
 
           {/* Theme switcher small screen */}
           <div
-            onClick={() => setTheme('dark')}
+            onClick={() => setTheme("dark")}
             aria-label="Theme Switcher"
             className="block sm:hidden ml-0 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
           >
-            {activeTheme === "dark" ? (
-              <FiMoon className="text-ternary-dark hover:text-gray-400 dark:text-ternary-light dark:hover:text-primary-light text-xl" />
-            ) : (
-              <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
-            )}
+            <Link
+              href="/store"
+              className={`block text-left text-sm font-medium text-secondary-light dark:hover:text-secondary-light mx-4 py-2`}
+            >
+              store
+            </Link>
           </div>
 
           {/* Small screen hamburger menu */}
@@ -120,27 +116,35 @@ function AppHeader() {
           }
         >
           <div className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2">
-          <NavItem href="/" label="Home" isActive={isActive("/")} />
+            <NavItem href="/" label="Home" isActive={isActive("/")} />
           </div>
           <div className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
-          <NavItem href="/store" label="Store" isActive={isActive("/store")} />
+            <NavItem
+              href="/store"
+              label="Store"
+              isActive={isActive("/store")}
+            />
           </div>
           <div className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
-          <NavItem href="/about" label="About" isActive={isActive("/about")} />
+            <NavItem
+              href="/about"
+              label="About"
+              isActive={isActive("/about")}
+            />
           </div>
           <div className="border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark">
-          <NavItem
-            href="/contact"
-            label="Contact"
-            isActive={isActive("/contact")}
-          />
+            <NavItem
+              href="/contact"
+              label="Contact"
+              isActive={isActive("/contact")}
+            />
           </div>
         </div>
 
         {/* Header links large screen */}
-        <div className="rounded-md border hidden border-black border-opacity-10 font-general-medium sm:flex p-5 sm:p-0 justify-center items-center shadow-lg">
-          <NavItem href="/" label="Home" isActive={isActive("/")} />
-          <NavItem href="/store" label="Store" isActive={isActive("/store")} />
+        <div className="rounded-3xl border hidden border-black border-opacity-10 font-general-medium sm:flex p-5 sm:p-0 justify-center items-center shadow-lg dark:bg-secondary-dark">
+          <NavItem href="/" label="Portfolio" isActive={isActive("/")} />
+
           <NavItem href="/about" label="About" isActive={isActive("/about")} />
           <NavItem
             href="/contact"
@@ -157,15 +161,16 @@ function AppHeader() {
 
           {/* Theme switcher large screen */}
           <div
-            onClick={() => setTheme('dark')}
+            onClick={() => setTheme("dark")}
             aria-label="Theme Switcher"
-            className="ml-8 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
+            className="rounded-2xl bg-primary-light dark:bg-ternary-dark  cursor-pointer"
           >
-            {activeTheme === "dark" ? (
-              <FiMoon className="text-ternary-dark hover:text-gray-400 dark:text-ternary-light dark:hover:text-primary-light text-xl" />
-            ) : (
-              <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
-            )}
+            <Link
+              href="/store"
+              className={`block px-2 text-left text-sm font-medium text-secondary-light dark:hover:text-secondary-light mx-4 py-2`}
+            >
+              store
+            </Link>
           </div>
         </div>
       </div>
@@ -185,9 +190,9 @@ const NavItem = ({ href, label, isActive }) => {
       href={href}
       className={`block text-left text-sm font-medium ${
         isActive
-          ? "text-secondary-dark dark:text-ternary-orange"
-          : "text-primary-dark dark:text-ternary-light"
-      } hover:text-secondary-dark dark:hover:text-ternary-orange mx-4 py-2`}
+          ? "text-secondary-dark dark:text-secondary-light"
+          : "text-primary-dark dark:text-gray-600"
+      } hover:text-secondary-dark dark:hover:text-secondary-light mx-4 py-2`}
     >
       {label}
     </Link>
