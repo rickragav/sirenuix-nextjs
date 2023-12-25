@@ -12,10 +12,10 @@ export const projectsData = [
     id: 1,
     title: "Google Health Platform",
     url: "google-health-platform",
-	platform:'web',
+    platform: "web",
     category: "UI Kits",
     img: "/images/web-project-2.jpg",
-    price: "$ 10",
+    price: "10",
     ProjectHeader: {
       title: "Google Health Platform",
       publishDate: "Jul 26, 2021",
@@ -25,7 +25,7 @@ export const projectsData = [
       {
         id: uuidv4(),
         title: "Google Health Platform",
-        img: "/images/ui-project-1.jpg",
+        img: "/images/ui-project-1.png",
       },
       {
         id: uuidv4(),
@@ -62,9 +62,36 @@ export const projectsData = [
           details: "555 8888 888",
         },
       ],
-      ObjectivesHeading: "Objective",
+      ObjectivesHeading: "Overview",
       ObjectivesDetails:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, natus! Quibusdam enim quod in esse, mollitia molestias incidunt quas ipsa accusamus veniam.",
+        "In this design challenge, I created this design in just 34 minutes without using a mouse with help of keyboard shortcuts and MacBook Pro trackpad. I hope you find it cool! Please share your feedback in the comment section below, and don't forget to hit the like button.❤️🤝",
+      ProjectHighlightHeading: "Highlights",
+      ProjectHighlightDetails: [
+        {
+          id: uuidv4(),
+          details: "Neatly and Organized Layers",
+        },
+        {
+          id: uuidv4(),
+          details: "Easy To Use Figma Components",
+        },
+        {
+          id: uuidv4(),
+          details: "Light Mode & Dark Mode",
+        },
+        {
+          id: uuidv4(),
+          details: "Easy Editable 100% Vector",
+        },
+        {
+          id: uuidv4(),
+          details: "Screen size: iPhone 13 Mini (375 x 812)",
+        },
+        {
+          id: uuidv4(),
+          details: "Figma Version",
+        },
+      ],
       Technologies: [
         {
           title: "Tools & Technologies",
@@ -140,10 +167,10 @@ export const projectsData = [
     id: 2,
     title: "Phoenix Digital Agency",
     url: "phoenix-digital-agency",
-	platform:'mobile',
+    platform: "mobile",
     category: "UI Kits",
     img: "/images/mobile-project-2.jpg",
-    price: "$ 20",
+    price: "20",
     ProjectHeader: {
       title: "Phoenix Digital Agency",
       publishDate: "Jul 26, 2021",
@@ -268,10 +295,10 @@ export const projectsData = [
     id: 3,
     title: "Project Management UI",
     url: "project-management-ui",
-	platform:'tablet',
+    platform: "tablet",
     category: "UI Kits",
     img: "/images/ui-project-1.jpg",
-    price: "$ 15",
+    price: "15",
     ProjectHeader: {
       title: "Project Management UI",
       publishDate: "Jul 26, 2021",
@@ -396,9 +423,9 @@ export const projectsData = [
     id: 4,
     title: "Cloud Storage Platform",
     url: "cloud-storage-platform",
-    platform:'web',
+    platform: "web",
     category: "UI Kits",
-    price: "$ 10",
+    price: "10",
     img: "/images/ui-project-2.jpg",
     ProjectHeader: {
       title: "Cloud Storage Platform",
@@ -524,9 +551,9 @@ export const projectsData = [
     id: 5,
     title: "WeTalk Social Application",
     url: "wetalk-social-app",
-	platform:'mobile',
+    platform: "mobile",
     category: "UI Kits",
-    price: "$ 35",
+    price: "35",
     img: "/images/mobile-project-1.jpg",
     ProjectHeader: {
       title: "WeTalk Social Application",
@@ -652,9 +679,9 @@ export const projectsData = [
     id: 6,
     title: "Apple New Design System",
     url: "apple-new-design-system",
-	platform:'tablet',
+    platform: "tablet",
     category: "UI Kits",
-    price: "$ 15",
+    price: "15",
     img: "/images/web-project-1.jpg",
     ProjectHeader: {
       title: "Apple New Design System",

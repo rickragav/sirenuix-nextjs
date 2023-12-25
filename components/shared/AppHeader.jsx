@@ -17,7 +17,7 @@ function AppHeader() {
   const router = useRouter();
 
   const isActive = (path) => {
-    console.log(router.pathname)
+    console.log(router.pathname);
     return router.pathname === path;
   };
 
@@ -56,19 +56,11 @@ function AppHeader() {
         <div className="flex justify-between items-center px-4 sm:px-0">
           <div>
             <Link href="/">
-              {activeTheme === "dark" ? (
-                <Image
-                  src={logoDark}
-                  className="w-36 cursor-pointer"
-                  alt="Dark Logo"
-                />
-              ) : (
-                <Image
-                  src={logoLight}
-                  className="w-36 cursor-pointer"
-                  alt="Dark Logo"
-                />
-              )}
+              <Image
+                src={logoDark}
+                className="w-28 cursor-pointer"
+                alt="sirenuix Logo"
+              />
             </Link>
           </div>
 
