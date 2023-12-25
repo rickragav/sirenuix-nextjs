@@ -8,6 +8,7 @@ import logoLight from "../../public/images/logo-light.svg";
 import logoDark from "../../public/images/logo-dark.svg";
 import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 import { useRouter } from "next/router";
+import { FaStore } from "react-icons/fa";
 
 function AppHeader() {
   const [showMenu, setShowMenu] = useState(false);
@@ -16,6 +17,7 @@ function AppHeader() {
   const router = useRouter();
 
   const isActive = (path) => {
+    console.log(router.pathname)
     return router.pathname === path;
   };
 
@@ -142,7 +144,7 @@ function AppHeader() {
         </div>
 
         {/* Header links large screen */}
-        <div className="rounded-3xl border hidden border-black border-opacity-10 font-general-medium sm:flex p-5 sm:p-0 justify-center items-center shadow-lg dark:bg-secondary-dark">
+        <div className=" -translate-x-5 rounded-3xl border hidden border-black border-opacity-10 font-general-medium sm:flex p-5 sm:p-0 justify-center items-center shadow-lg dark:bg-secondary-dark">
           <NavItem href="/" label="Portfolio" isActive={isActive("/")} />
 
           <NavItem href="/about" label="About" isActive={isActive("/about")} />
@@ -161,16 +163,15 @@ function AppHeader() {
 
           {/* Theme switcher large screen */}
           <div
-            onClick={() => setTheme("dark")}
             aria-label="Theme Switcher"
-            className="rounded-2xl bg-primary-light dark:bg-ternary-dark  cursor-pointer"
+            className={`text-sm dark:bg-secondary-dark border border-white border-opacity-5 font-general-medium px-5 py-2 space-x-2 items-center rounded-full flex ${
+              isActive("/store")
+                ? "text-secondary-dark dark:text-secondary-light"
+                : `dark:text-gray-400`
+            } hover:text-secondary-dark dark:hover:text-secondary-light`}
           >
-            <Link
-              href="/store"
-              className={`block px-2 text-left text-sm font-medium text-secondary-light dark:hover:text-secondary-light mx-4 py-2`}
-            >
-              store
-            </Link>
+            <FaStore />
+            <Link href="/store">Store</Link>
           </div>
         </div>
       </div>
@@ -191,7 +192,7 @@ const NavItem = ({ href, label, isActive }) => {
       className={`block text-left text-sm font-medium ${
         isActive
           ? "text-secondary-dark dark:text-secondary-light"
-          : "text-primary-dark dark:text-gray-600"
+          : `${label === "Store" ? "dark:text-gray-400" : "dark:text-gray-600"}`
       } hover:text-secondary-dark dark:hover:text-secondary-light mx-4 py-2`}
     >
       {label}

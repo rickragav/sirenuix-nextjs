@@ -4,6 +4,7 @@ import { FaAngleDown } from "react-icons/fa";
 import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 import sirenuix from "../../public/images/sirenuix-surender.png";
 import boxrightsvg from "../../public/images/banner/boxrightcolor.svg";
+import arrowdown from "../../public/images/banner/arrowdown.gif";
 import boxleftsvg from "../../public/images/banner/boxleftcolor.svg";
 import sirenuixdesigner from "../../public/images/banner/sirenuixdesigner.svg";
 import bannersearch from "../../public/images/banner/baannersearch.svg";
@@ -38,7 +39,7 @@ function AppBanner() {
 
         <div className="mx-auto text-center md:-translate-y-16 space-y-5">
           <Image
-            className="mx-auto w-142 h-142"
+            className="mx-auto"
             alt="Product Designer - Sirenuix"
             src={sirenuixdesigner}
           />
@@ -52,14 +53,14 @@ function AppBanner() {
             className="font-semibold font-poppins  text-transparent text-center capitalize text-4xl sm:text-5xl"
           >
             <h1>Product Designer</h1>
-            <h2>Crafting Visual Solutions</h2>
+            <h2 className="py-1">Crafting Visual Solutions</h2>
           </div>
           <p className="font-neue text-base font-normal text-neutral-500">
             Passionate about making design reach its full potential
           </p>
           <div className="mx-auto relative w-1/2 md:w-1/3 h-14">
             <input
-              className=" text-sm w-full border-2 h-14 rounded-3xl px-5 py-2 dark:border-secondary-dark  text-primary-dark dark:text-secondary-light bg-ternary-light dark:bg-primary-dark shadow-sm focus:outline-none focus:ring-0"
+              className=" text-sm w-full border-2 h-14 rounded-full px-5 py-2 dark:border-secondary-dark  text-primary-dark dark:text-secondary-light bg-ternary-light dark:bg-primary-dark shadow-sm focus:outline-none focus:ring-0"
               type="text"
               id="search"
               placeholder="Search your favorite..."
@@ -72,12 +73,21 @@ function AppBanner() {
               src={bannersearch}
             />
           </div>
-          <div className="mx-auto flex justify-center w-1/2 h-14 translate-y-6">
-            <Image
-              className="h-14"
-              alt="show projects"
-              src={roundarrowdown}
-            />
+          {/* <div className="mx-auto flex justify-center w-1/2 h-14 translate-y-6">
+            <Image className="h-14" alt="show projects" src={roundarrowdown} />
+          </div> */}
+          <div className="mx-auto relative translate-y-6 hover:cursor-pointer">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className=" dark:bg-primary-dark border  dark:border-secondary-dark rounded-full">
+                <Image
+                  alt="show projects"
+                  src={arrowdown}
+                  className="object-cover rounded p-2" 
+                  width={50}
+                  height={50}
+                />
+              </div>
+            </div>
           </div>
         </div>
 
