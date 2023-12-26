@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 
 function ProjectSingle(props) {
   return (
+    <html lang="en">
     <div className="container mx-auto">
       <PagesMetaHead title={props.project.title} />
 
@@ -135,6 +136,7 @@ function ProjectSingle(props) {
 
       <RelatedProjects />
     </div>
+    </html>
   );
 }
 

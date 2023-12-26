@@ -12,14 +12,14 @@ function PagesMetaHead({ title, keywords, description }) {
       <title>{title}</title>
 
       {/* Set lang attribute */}
-      <html lang="en" />
+      {/* <html lang="en" /> */}
 
       {/* Hreflang tags for language variations */}
-      <link
+      {/* <link
         rel="alternate"
         hrefLang="en"
         href="https://www.sirenuix.com"
-      />
+      /> */}
     </Head>
   );
 }

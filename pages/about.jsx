@@ -6,6 +6,7 @@ import PagesMetaHead from '../components/PagesMetaHead';
 
 function about() {
 	return (
+		<html lang="en">
 		<div>
 			<PagesMetaHead title="About Me" />
 
@@ -36,6 +37,7 @@ function about() {
 				<AboutClients />
 			</motion.div> */}
 		</div>
+		</html>
 	);
 }
 
