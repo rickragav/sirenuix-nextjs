@@ -9,12 +9,12 @@ export default function Home() {
   return (
     <div className="container mx-auto">
       <PagesMetaHead
-        title="Sirenuix | UI/UX Designer - Crafting Visual Solutions for Digital Experiences"
+        title="Design | Sirenuix | Product Designer"
         description={
-          "Explore the design world of sirenuix, a UI/UX and Product Designer crafting visual solutions for innovative digital experiences. Dive into a portfolio where creativity meets functionality, showcasing captivating interfaces and seamless user journeys."
+          "Meet Sirenuix, Product Designer at Zoho based in India, committed to shaping engaging and human-centered experiences for a seamless digital voyage."
         }
         keywords={
-          "UI/UX Design, Product Design, Digital Experiences, Innovative Design, Interactive Design, User Journeys,User Experiences, Web and Mobile Design"
+          "UI/UX Design, India, Zoho,  Product Designer, Digital Experiences, Innovative Design, Interactive Design, User Journeys,User Experiences, Web and Mobile Design"
         }
       />
       <AppBanner />
