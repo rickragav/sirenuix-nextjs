@@ -1,23 +1,21 @@
 import { v4 as uuidv4 } from "uuid";
-import {
-  FiFacebook,
-  FiInstagram,
-  FiLinkedin,
-  FiTwitter,
-  FiYoutube,
-} from "react-icons/fi";
 
 export const projectsData = [
   {
-    id: 1,
-    title: "Google Health Platform",
+    id: "salon-scheduling-app-design",
+    title: "Salon Appointment App UI",
     url: "google-health-platform",
     platform: "web",
     category: "UI Kits",
     img: "/images/web-project-2.jpg",
     price: "10",
+    seo: {
+      title: "Beauty Salon Appointment App Design | UI Template",
+      description:
+        "Transform your beauty salon experience with our elegant Beauty Salon Appointment App Design UI Template. Streamline appointment scheduling, enhance user engagement, and elevate your salon's digital presence. Our meticulously crafted UI template offers a seamless and visually stunning solution for managing appointments, showcasing services, and creating a user-friendly environment. Elevate your salon's online presence and provide clients with a modern, efficient, and visually appealing way to book appointments. Download our Beauty Salon Appointment App UI Template and redefine the way your salon connects with clients.",
+    },
     ProjectHeader: {
-      title: "Google Health Platform",
+      title: "Beauty Salon Appointment Template",
       publishDate: "Jul 26, 2021",
       tags: "UI / Frontend",
     },
