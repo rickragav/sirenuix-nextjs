@@ -9,14 +9,15 @@ import greenCheck from "../../public/images/greencheck.svg";
 import PrimaryButton from "../../components/reusable/PrimaryButton";
 import DownloadButton from "../../components/reusable/DownloadButton";
 import { motion } from "framer-motion";
+import projectService from "../../services/ProjectService";
 
 function ProjectSingle(props) {
   return (
     <html lang="en">
       <div className="container mx-auto">
         <PagesMetaHead
-          title={props.project.seo.title}
-          description={props.project.seo.description}
+          title={JSON.parse(props.project).seo.title}
+          description={JSON.parse(props.project).seo.description}
         />
 
         <motion.section
@@ -29,7 +30,7 @@ function ProjectSingle(props) {
             <div className="flex space-x-4 items-center  mt-14 sm:mt-20">
               <Image src={arrowleftcircle} alt="navigate to projects"></Image>
               <h1 className=" ">
-                {props.project.ProjectHeader.title} - {props.project.category}
+                {JSON.parse(props.project).seo.title} - {JSON.parse(props.project).designProduct}
               </h1>
             </div>
             <h3 className=" text-xs sm:text-sm dark:text-gray-400">
@@ -41,14 +42,14 @@ function ProjectSingle(props) {
               <div className="flex-1 py-2">
                 <div className="flex items-center space-x-2">
                   <Image
-                    src={figmafw}
+                    src={JSON.parse(props.project).designToolImage}
                     className="cursor-pointer"
-                    alt="Dark Logo"
+                    alt="Design Tool Image"
                     width={35}
                     height={35}
                   />
                   <p className="text-xs text-ternary-dark dark:text-ternary-light">
-                    {props.project.platform}
+                    {JSON.parse(props.project).category}
                   </p>
                   <Image
                     src={arrowRight}
@@ -58,7 +59,7 @@ function ProjectSingle(props) {
                     height={10}
                   />
                   <p className="text-xs text-ternary-dark dark:text-ternary-light">
-                    {props.project.category}
+                    {JSON.parse(props.project).designProduct}
                   </p>
                 </div>
               </div>
@@ -78,10 +79,9 @@ function ProjectSingle(props) {
           <div className="w-full space-y-5 mt-10 flex flex-col sm:flex-row sm:gap-5 sm:space-y-0">
             <div className="w-full sm:w-4/6">
               <Image
-                src={props.project.ProjectImages[0].img}
+                src={JSON.parse(props.project).baseImage}
                 className="border dark:border-secondary-dark rounded-2xl cursor-pointer shadow-lg sm:shadow-none w-full h-5/6 object-cover"
-                alt={props.project.ProjectImages[0].title}
-                key={props.project.ProjectImages[0].id}
+                alt={JSON.parse(props.project).seo.title + 'base image'}
                 width={1000}
                 height={10}
               />
@@ -89,23 +89,23 @@ function ProjectSingle(props) {
             <div className="w-full sm:w-2/6 flex flex-col space-y-5">
               <div className="dark:bg-secondary-dark py-4 px-4 w-full rounded-2xl space-y-4">
                 <p className="dark:text-primary-light text-lg">
-                  {props.project.ProjectInfo.ObjectivesHeading}
+                  {JSON.parse(props.project).projectInfo.projectObjectives.title}
                 </p>
                 <p className="dark:text-gray-400 text-sm">
-                  {props.project.ProjectInfo.ObjectivesDetails}
+                {JSON.parse(props.project).projectInfo.projectObjectives.description}
                 </p>
               </div>
               <div className="dark:bg-secondary-dark py-4 px-4 w-full rounded-2xl space-y-4">
                 <p className="dark:text-primary-light text-lg">
-                  {props.project.ProjectInfo.ProjectHighlightHeading}
+                {JSON.parse(props.project).projectInfo.projectHighlights.title}
                 </p>
                 <ul className="dark:text-gray-400 text-sm space-y-1">
-                  {props.project.ProjectInfo.ProjectHighlightDetails.map(
-                    (highlights) => {
+                  {JSON.parse(props.project).projectInfo.projectHighlights.descriptions.map(
+                    (highlights,index) => {
                       return (
-                        <li className="flex space-x-1" key={highlights.id}>
-                          <Image src={greenCheck}></Image>
-                          <span>{highlights.details}</span>
+                        <li key={index} className="flex space-x-1">
+                          <Image src={greenCheck} ></Image>
+                          <span>{highlights}</span>
                         </li>
                       );
                     }
@@ -118,14 +118,14 @@ function ProjectSingle(props) {
 
         {/* Gallery */}
         <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-5 ">
-          {props.project.ProjectImages.map((project) => {
+          {JSON.parse(props.project).projectInfo.projectImages.map((project,index) => {
             return (
-              <div className="mb-10 sm:mb-0" key={project.id}>
+              <div  key={index} className="mb-10 sm:mb-0">
                 <Image
-                  src={project.img}
+                  src={project}
                   className="rounded-xl cursor-pointer shadow-lg sm:shadow-none"
-                  alt={project.title}
-                  key={project.id}
+                  alt={JSON.parse(props.project).seo.title + 'showcase Image' + index}
+                 
                   layout="responsive"
                   width={100}
                   height={90}
@@ -141,13 +141,39 @@ function ProjectSingle(props) {
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const { id } = query;
-  return {
-    props: {
-      project: projectsData.filter((project) => project.id === id)[0],
-    },
-  };
+
+
+// This function gets called at build time
+export async function getStaticPaths() {
+  // Call an external API endpoint to get posts
+  const res = await projectService.getAllProjects();
+
+  // Get the paths we want to pre-render based on posts
+  const paths = res.map((projects) => ({
+    params: { id: projects.slug },
+  }));
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  try {
+    // Fetch data from your service or API
+    const response = await projectService.getProjectBySlug(params.id);
+
+    return {
+      props: {
+        project: JSON.stringify(response),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+
+    return {
+      props: {
+        project: null,
+      },
+    };
+  }
 }
 
 export default ProjectSingle;

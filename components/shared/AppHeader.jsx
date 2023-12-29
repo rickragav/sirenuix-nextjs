@@ -17,7 +17,6 @@ function AppHeader() {
   const router = useRouter();
 
   const isActive = (path) => {
-    console.log(router.pathname);
     return router.pathname === path;
   };
 

@@ -1,30 +1,25 @@
-// utils/dbConnect.js
-import mongoose from "mongoose";
+import { MongoClient } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+let client;
 
-console.log('MONGODB_URI' + MONGODB_URI)
+export async function connectToDatabase() {
+  try {
+    if (!client || !client.isConnected) {
+      const uri = process.env.MONGODB_URI;
+      const dbName = 'sirenuix'; // Replace with your actual database name
 
-if (!MONGODB_URI) {
-  throw new Error(
-    "Please define the MONGODB_URI environment variable inside .env.local"
-  );
-}
+      client = new MongoClient(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
 
-let cachedConnection = null;
+      await client.connect();
+      console.log('Connected to MongoDB');
+    }
 
-export async function dbConnect() {
-  if (cachedConnection) {
-    return cachedConnection;
+    return client.db('sirenuix'); // Specify the database name here
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error.message);
+    throw error; // Rethrow the error to handle it at the higher level if needed
   }
-
-  const db = await mongoose.connect(MONGODB_URI,
-//      {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   }
-  );
-
-  cachedConnection = db;
-  return db; 
 }

@@ -20,41 +20,38 @@ const ProjectSingle = (props) => {
     >
       <Link
         href="/projects/[id]"
-        as={"/projects/" + props.id}
+        as={"/projects/" + props.slug}
         aria-label="Single Project"
         passHref
       >
         <div className="border rounded-xl shadow-lg hover:shadow-xl cursor-pointer mb-10 sm:mb-0 bg-secondary-light dark:bg-ternary-dark dark:border-secondary-dark">
           <div>
             <Image
-              src={props.img}
+              src={props.baseImage}
               className="rounded-t-xl border-none"
               alt="Single Project"
               layout="responsive"
-              width={100}
-              height={90}
+              width={200}
+              height={200}
             />
           </div>
           <div className="text-center px-4 py-6">
             <div className="flex justify-between">
               <p className="font-general-medium text-lg md:text-xl text-ternary-dark dark:text-ternary-light mb-2">
-                {props.title}
-              </p>
-              <p className="font-general-medium text-sm md:text-lg text-ternary-dark dark:text-ternary-light mb-2">
-                {props.price}
+                {props.seo.title}
               </p>
             </div>
             <div className="flex justify-between capitalize">
               <div className="flex items-center justify-center space-x-2">
                 <Image
-                  src={figmafw}
+                  src={props.baseImage}
                   className="cursor-pointer"
-                  alt="Dark Logo"
-                  width={35}
-                  height={35}
+                  alt="designTool Image new "
+                  width={50}
+                  height={50}
                 />
                 <p className="text-xs text-ternary-dark dark:text-ternary-light">
-                  {props.platform}
+                  {props.category}
                 </p>
                 <Image
                   src={arrowRight}
@@ -63,8 +60,8 @@ const ProjectSingle = (props) => {
                   width={10}
                   height={10}
                 />
-				<p className="text-xs text-ternary-dark dark:text-ternary-light">
-                  {props.category}
+                <p className="text-xs text-ternary-dark dark:text-ternary-light">
+                  {props.designProduct}
                 </p>
               </div>
               <div></div>

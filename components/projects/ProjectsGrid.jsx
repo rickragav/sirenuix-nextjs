@@ -4,7 +4,7 @@ import ProjectSingle from "./ProjectSingle";
 import { projectsData } from "../../data/projectsData";
 import ProjectsFilter from "./ProjectsFilter";
 
-function ProjectsGrid() {
+const ProjectsGrid = ({ projects }) => {
   const [searchProject, setSearchProject] = useState();
   const [selectProject, setSelectProject] = useState();
 
@@ -89,7 +89,7 @@ function ProjectsGrid() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 sm:gap-5">
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 sm:gap-5">
         {selectProject
           ? selectProjectsByCategory.map((project, index) => {
               return <ProjectSingle key={index} {...project} />;
@@ -97,9 +97,23 @@ function ProjectsGrid() {
           : projectsData.map((project, index) => (
               <ProjectSingle key={index} {...project} />
             ))}
+      </div> */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 mt-6 sm:gap-5">
+        {/* {JSON.parse(projects).map((project, index) => (
+          <ProjectSingle key={index} {...project} />
+        ))} */}
+        {projects ? (
+          JSON.parse(projects).map((project, index) => (
+            <ProjectSingle key={index} {...project} />
+          ))
+        ) : (
+          <>
+            <p>{projects}</p>
+          </>
+        )}
       </div>
     </section>
   );
-}
+};
 
 export default ProjectsGrid;

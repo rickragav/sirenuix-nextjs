@@ -3,9 +3,9 @@ import PagesMetaHead from "../components/PagesMetaHead";
 import ProjectsGrid from "../components/projects/ProjectsGrid";
 import Button from "../components/reusable/Button";
 import AppBanner from "../components/shared/AppBanner";
-import Carousel from "../components/shared/BackgroundCarousel";
+import projectService from "../services/ProjectService";
 
-export default function Home() {
+const Home = ({ projects }) => {
   return (
     <html lang="en">
       <div className="container mx-auto">
@@ -19,7 +19,8 @@ export default function Home() {
           }
         />
         <AppBanner />
-        <ProjectsGrid />
+
+        <ProjectsGrid projects={projects} />
         <div className="mt-10 sm:mt-15 flex justify-center">
           <Link href="/projects" aria-label="More Projects" passHref>
             <Button title="See All" />
@@ -28,4 +29,18 @@ export default function Home() {
       </div>
     </html>
   );
+};
+export default Home;
+
+export async function getStaticProps() {
+  // Fetch data from your API
+  const response = await projectService.getAllProjects();
+
+  const projects = JSON.stringify(response);
+
+  return {
+    props: {
+      projects,
+    },
+  };
 }
