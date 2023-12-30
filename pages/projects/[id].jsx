@@ -12,6 +12,16 @@ import { motion } from "framer-motion";
 import projectService from "../../services/ProjectService";
 
 function ProjectSingle(props) {
+  const decodeBase64BreifDescription = (base64String) => {
+    try {
+      const decodedString = atob(base64String);
+
+      return decodedString;
+    } catch (error) {
+      console.error("Error decoding base64:", error.message);
+      return ""; // Or you can return an empty string or any other default value
+    }
+  };
   return (
     <html lang="en">
       <div className="container mx-auto">
@@ -30,7 +40,8 @@ function ProjectSingle(props) {
             <div className="flex space-x-4 items-center  mt-14 sm:mt-20">
               <Image src={arrowleftcircle} alt="navigate to projects"></Image>
               <h1 className=" ">
-                {JSON.parse(props.project).seo.title} - {JSON.parse(props.project).designProduct}
+                {JSON.parse(props.project).briefTitle} -{" "}
+                {JSON.parse(props.project).designProduct}
               </h1>
             </div>
             <h3 className=" text-xs sm:text-sm dark:text-gray-400">
@@ -70,7 +81,7 @@ function ProjectSingle(props) {
                 <DownloadButton
                   title="Download"
                   titleClass="text-sm"
-                  price={props.project.price}
+                  price={JSON.parse(props.project).price}
                 />
               </div>
             </div>
@@ -80,8 +91,8 @@ function ProjectSingle(props) {
             <div className="w-full sm:w-4/6">
               <Image
                 src={JSON.parse(props.project).baseImage}
-                className="border dark:border-secondary-dark rounded-2xl cursor-pointer shadow-lg sm:shadow-none w-full h-5/6 object-cover"
-                alt={JSON.parse(props.project).seo.title + 'base image'}
+                className="border dark:border-secondary-dark rounded-2xl cursor-pointer shadow-lg sm:shadow-none w-full h-full object-cover"
+                alt={JSON.parse(props.project).seo.title + "base image"}
                 width={1000}
                 height={10}
               />
@@ -89,22 +100,33 @@ function ProjectSingle(props) {
             <div className="w-full sm:w-2/6 flex flex-col space-y-5">
               <div className="dark:bg-secondary-dark py-4 px-4 w-full rounded-2xl space-y-4">
                 <p className="dark:text-primary-light text-lg">
-                  {JSON.parse(props.project).projectInfo.projectObjectives.title}
+                  {
+                    JSON.parse(props.project).projectInfo.projectObjectives
+                      .title
+                  }
                 </p>
                 <p className="dark:text-gray-400 text-sm">
-                {JSON.parse(props.project).projectInfo.projectObjectives.description}
+                  {
+                    JSON.parse(props.project).projectInfo.projectObjectives
+                      .description
+                  }
                 </p>
               </div>
               <div className="dark:bg-secondary-dark py-4 px-4 w-full rounded-2xl space-y-4">
                 <p className="dark:text-primary-light text-lg">
-                {JSON.parse(props.project).projectInfo.projectHighlights.title}
+                  {
+                    JSON.parse(props.project).projectInfo.projectHighlights
+                      .title
+                  }
                 </p>
                 <ul className="dark:text-gray-400 text-sm space-y-1">
-                  {JSON.parse(props.project).projectInfo.projectHighlights.descriptions.map(
-                    (highlights,index) => {
+                  {JSON.parse(
+                    props.project
+                  ).projectInfo.projectHighlights.descriptions.map(
+                    (highlights, index) => {
                       return (
                         <li key={index} className="flex space-x-1">
-                          <Image src={greenCheck} ></Image>
+                          <Image src={greenCheck}></Image>
                           <span>{highlights}</span>
                         </li>
                       );
@@ -117,22 +139,40 @@ function ProjectSingle(props) {
         </motion.section>
 
         {/* Gallery */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-5 ">
-          {JSON.parse(props.project).projectInfo.projectImages.map((project,index) => {
-            return (
-              <div  key={index} className="mb-10 sm:mb-0">
-                <Image
-                  src={project}
-                  className="rounded-xl cursor-pointer shadow-lg sm:shadow-none"
-                  alt={JSON.parse(props.project).seo.title + 'showcase Image' + index}
-                 
-                  layout="responsive"
-                  width={100}
-                  height={90}
-                />
-              </div>
-            );
-          })}
+        <div className=" my-14 grid grid-cols-1 sm:grid-cols-2 sm:gap-5 ">
+          {JSON.parse(props.project).projectInfo.projectImages.map(
+            (project, index) => {
+              return (
+                <div key={index} className="mb-10 sm:mb-0">
+                  <Image
+                    src={project}
+                    className="rounded-xl cursor-pointer shadow-lg sm:shadow-none"
+                    alt={
+                      JSON.parse(props.project).seo.title +
+                      "showcase Image" +
+                      index
+                    }
+                    layout="responsive"
+                    width={100}
+                    height={90}
+                  />
+                </div>
+              );
+            }
+          )}
+        </div>
+
+        <div className=" text-white">
+          {/* Assuming `props.project` is a stringified JSON */}
+          {props.project && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: decodeBase64BreifDescription(
+                  JSON.parse(props.project).projectInfo.projectBriefDetails
+                ),
+              }}
+            />
+          )}
         </div>
 
         <RelatedProjects />
@@ -140,8 +180,6 @@ function ProjectSingle(props) {
     </html>
   );
 }
-
-
 
 // This function gets called at build time
 export async function getStaticPaths() {

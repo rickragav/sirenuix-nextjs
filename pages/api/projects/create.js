@@ -13,6 +13,7 @@ export default async function handler(req, res) {
         designToolImage,
         designProduct,
         category,
+        title,
       } = req.body;
 
       // Connect to the database
@@ -28,6 +29,7 @@ export default async function handler(req, res) {
         designToolImage,
         designProduct,
         category,
+        title,
       });
 
       res.status(result.success ? 201 : 500).json(result);

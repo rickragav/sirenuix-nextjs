@@ -37,8 +37,8 @@ const ProjectSingle = (props) => {
           </div>
           <div className="text-center px-4 py-6">
             <div className="flex justify-between">
-              <p className="font-general-medium text-lg md:text-xl text-ternary-dark dark:text-ternary-light mb-2">
-                {props.seo.title}
+              <p className="font-general-medium text-lg text-ternary-dark dark:text-ternary-light mb-2">
+                {props.title}
               </p>
             </div>
             <div className="flex justify-between capitalize">

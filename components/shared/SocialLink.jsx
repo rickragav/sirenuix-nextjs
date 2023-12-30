@@ -1,21 +1,23 @@
 import React from "react";
-import { FiGithub, FiTwitter, FiLinkedin, FiGlobe, FiYoutube } from "react-icons/fi";
+import { FiGithub, FiTwitter, FiLinkedin, FiGlobe, FiYoutube, FiInstagram } from "react-icons/fi";
+import { FaBehance } from "react-icons/fa";
 
 const socialLinks = [
-  {
-    id: 1,
-    icon: <FiGlobe />,
-    url: "https://www.stoman.me/",
-  },
+ 
   {
     id: 2,
-    icon: <FiGithub />,
-    url: "https://github.com/realstoman",
+    icon: <FiInstagram />,
+    url: "https://www.instagram.com/siren_uix",
   },
   {
     id: 3,
-    icon: <FiTwitter />,
-    url: "https://twitter.com/realstoman",
+    icon: <FaBehance />,
+    url: "https://www.behance.net/surendarv",
+  },
+  {
+    id: 1,
+    icon: <FiGlobe />,
+    url: "https://sirenuix.com",
   },
   {
     id: 4,

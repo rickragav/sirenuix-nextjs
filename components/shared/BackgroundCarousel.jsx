@@ -22,10 +22,10 @@ const Carousel = ({ imageArray }) => {
     <div>
       <Slider {...settings}>
         {imageArray.map((image, index) => (
-          <div key={index}>
+          <div  className="h-96"  key={index}>
             <Image
               src={image}
-              className="w-full h-full object-cover cursor-pointer"
+              className="border dark:border-secondary-dark rounded-2xl cursor-pointer shadow-lg sm:shadow-none w-full h-full object-center object-fill"
               alt={`Slide ${index + 1}`}
               width={200}
               height={100}

@@ -5,12 +5,13 @@ import { aboutMeInfo } from "../../data/aboutMeInfo";
 import { SocialLink, socialLinks } from "../shared/SocialLink";
 import Carousel from "../shared/BackgroundCarousel";
 import sirenuix from "../../public/images/sirenuix-surender.png";
+import rakeshimg from '../../public/images/rakeshbg.png'
 
 function AboutMeBio() {
   const [aboutMe, setAboutMe] = useState(aboutMeData);
   const [aboutInfo, setAboutMeInfo] = useState(aboutMeInfo);
 
-  const myImageArray = [sirenuix, sirenuix];
+  const myImageArray = [sirenuix, rakeshimg];
 
   return (
     <div className="block sm:gap-10 mt-10 sm:mt-20">
@@ -25,8 +26,8 @@ function AboutMeBio() {
       >
         About Me
       </h1>
-      <div className="flex sm:gap-10 mt-5 sm:mt-10">
-        <div className="font-general-regular w-full sm:w-2/3 text-left">
+      <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row sm:gap-10 mt-5 sm:mt-10">
+        <div className="font-general-regular w-full md:w-2/3 text-left">
           {aboutMe.map((bio) => (
             <p
               className="mb-4 text-ternary-dark dark:text-ternary-light text-lg"
@@ -35,7 +36,7 @@ function AboutMeBio() {
               {bio.bio}
             </p>
           ))}
-          <ul className="flex gap-4 sm:gap-8">
+          <ul className="flex gap-4 md:gap-8">
             {socialLinks.map((link) => (
               <SocialLink
                 key={link.id}
@@ -46,15 +47,7 @@ function AboutMeBio() {
             ))}
           </ul>
         </div>
-        <div className="w-full sm:w-1/3 mb-7 sm:mb-0 space-y-4">
-          {/* <Image
-            src="/images/profile.jpeg"
-            width={200}
-            height={200}
-            className="rounded-lg"
-            alt="Profile Image"
-          /> */}
-
+        <div className="w-full md:w-1/3 mb-7 sm:mb-0 space-y-4">
           <Carousel imageArray={myImageArray} />
           <div className="flex text-xs space-x-4">
             <div className="flex flex-col">

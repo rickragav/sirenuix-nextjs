@@ -28,14 +28,14 @@ module.exports = {
         "primary-dark": "#0f0f0f",
         "secondary-dark": "#e5e5e50f",
         "ternary-dark": "#1A1A1A",
-		"ternary-orange":"#F6743C",
+        "ternary-orange": "#F6743C",
 
         // Extended v3 color
         gray: colors.neutral,
       },
       fontFamily: {
         poppins: ["Poppins", "system-ui", "sans-serif"],
-		neue: ["Helvetica Neue", "system-ui", "sans-serif"],
+        neue: ["Helvetica Neue", "system-ui", "sans-serif"],
         nunito: ["Nunito Sans", "sans-serif"],
       },
       container: {

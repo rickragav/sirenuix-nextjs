@@ -11,13 +11,13 @@ import { SocialLink, socialLinks } from "./SocialLink";
 function AppFooter() {
   return (
     <div className="container mx-auto">
-      <div className="pt-20 sm:pt-30 pb-8 mt-20 border-t-2 border-primary-light dark:border-secondary-dark">
-        {/* Footer social links */}
-        <div className="font-general-regular flex flex-col justify-center items-center mb-12 sm:mb-28">
+      <div className="pt-10 sm:pt-10 pb-8 mt-10 border-t-2 border-primary-light dark:border-secondary-dark">
+      
+        {/* <div className="font-general-regular flex flex-col justify-center items-center mb-12 sm:mb-28">
           <p className="text-3xl sm:text-4xl text-primary-dark dark:text-primary-light mb-5">
             Follow me
           </p>
-          {/* <ul className="flex gap-4 sm:gap-8">
+          <ul className="flex gap-4 sm:gap-8">
             {socialLinks.map((link) => (
               <a
                 href={link.url}
@@ -28,14 +28,14 @@ function AppFooter() {
                 <i className="text-xl sm:text-2xl md:text-3xl">{link.icon}</i>
               </a>
             ))}
-          </ul> */}
+          </ul>
 
           <ul className="flex gap-4 sm:gap-8">
             {socialLinks.map((link) => (
               <SocialLink key={link.id} icon={link.icon} url={link.url} className="text-xl sm:text-2xl md:text-3xl" />
             ))}
           </ul>
-        </div>
+        </div> */}
 
         <AppFooterCopyright />
       </div>
