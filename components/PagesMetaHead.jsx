@@ -27,6 +27,7 @@ function PagesMetaHead({
       <meta property="og:type" content={og_type} />
       <meta property="og:image" content={og_image} />
       <link rel="apple-touch-icon" sizes="180x180" href={og_image}></link>
+      <meta name="seobility" content="0bdc474edece9dee90d978baba6a9fd3"></meta>
     </Head>
   );
 }
