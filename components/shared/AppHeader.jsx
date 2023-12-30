@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { FiSun, FiMoon, FiX, FiMenu } from "react-icons/fi";
 import HireMeModal from "../HireMeModal";
 import logoLight from "../../public/images/logo-light.svg";
-import logoDark from "../../public/images/logo-dark.svg";
+import logoDark from "../../public/images/darkLogo.png";
 import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 import { useRouter } from "next/router";
 import { FaStore } from "react-icons/fa";
@@ -59,6 +59,7 @@ function AppHeader() {
                 src={logoDark}
                 className="w-28 cursor-pointer"
                 alt="sirenuix Logo"
+                priority
               />
             </Link>
           </div>

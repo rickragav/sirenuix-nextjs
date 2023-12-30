@@ -1,25 +1,32 @@
 import Head from "next/head";
 
-function PagesMetaHead({ title, keywords, description }) {
+function PagesMetaHead({
+  title,
+  keywords,
+  description,
+  og_title,
+  og_site_name,
+  og_type,
+  og_url,
+  og_image,
+  og_description,
+}) {
   return (
     <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
-      <link rel="canonical" href="https://www.sirenuix.com"></link>
       <title>{title}</title>
-
-      {/* Set lang attribute */}
-      {/* <html lang="en" /> */}
-
-      {/* Hreflang tags for language variations */}
-      {/* <link
-        rel="alternate"
-        hrefLang="en"
-        href="https://www.sirenuix.com"
-      /> */}
+      <meta name="author" content="Behance | Instagram Surendarv" />
+      <meta property="og:title" content={og_title} />
+      <meta property="og:site_name" content={og_site_name} />
+      <meta property="og:url" content={og_url} />
+      <meta property="og:description" content={og_description} />
+      <meta property="og:type" content={og_type} />
+      <meta property="og:image" content={og_image} />
+      <link rel="apple-touch-icon" sizes="180x180" href={og_image}></link>
     </Head>
   );
 }

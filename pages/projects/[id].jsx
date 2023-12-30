@@ -1,15 +1,21 @@
 import Image from "next/image";
-import PagesMetaHead from "../../components/PagesMetaHead";
-import { projectsData } from "../../data/projectsData";
-import RelatedProjects from "../../components/projects/RelatedProjects";
-import arrowleftcircle from "../../public/images/arrow-left.svg";
-import figmafw from "../../public/images/framework/figma.png";
-import arrowRight from "../../public/images/arrow-right.svg";
-import greenCheck from "../../public/images/greencheck.svg";
-import PrimaryButton from "../../components/reusable/PrimaryButton";
-import DownloadButton from "../../components/reusable/DownloadButton";
+import arrowleftcircle from "../../public/images/arrowLeftCircle.png";
+import arrowRight from "../../public/images/arrowRight.png";
+import greenCheck from "../../public/images/greencheck.png";
 import { motion } from "framer-motion";
 import projectService from "../../services/ProjectService";
+import dynamic from "next/dynamic";
+
+const PrimaryButton = dynamic(() =>
+  import("../../components/reusable/PrimaryButton")
+);
+const DownloadButton = dynamic(() =>
+  import("../../components/reusable/DownloadButton")
+);
+const RelatedProjects = dynamic(() =>
+  import("../../components/projects/RelatedProjects")
+);
+const PagesMetaHead = dynamic(() => import("../../components/PagesMetaHead"));
 
 function ProjectSingle(props) {
   const decodeBase64BreifDescription = (base64String) => {
@@ -28,6 +34,13 @@ function ProjectSingle(props) {
         <PagesMetaHead
           title={JSON.parse(props.project).seo.title}
           description={JSON.parse(props.project).seo.description}
+          keywords={JSON.parse(props.project).seo.keywords}
+          og_description={JSON.parse(props.project).seo.og_description}
+          og_image={JSON.parse(props.project).seo.og_image}
+          og_title={JSON.parse(props.project).seo.og_title}
+          og_type={JSON.parse(props.project).seo.og_type}
+          og_url={JSON.parse(props.project).seo.og_url}
+          og_site_name={JSON.parse(props.project).seo.og_site_name}
         />
 
         <motion.section
@@ -38,7 +51,12 @@ function ProjectSingle(props) {
           {/* Header */}
           <div className="font-general w-full text-xl sm:text-2xl text-primary-dark dark:text-primary-light space-y-2">
             <div className="flex space-x-4 items-center  mt-14 sm:mt-20">
-              <Image src={arrowleftcircle} alt="navigate to projects"></Image>
+              <Image
+                src={arrowleftcircle}
+                alt="Arrow Left Circle"
+                width={50} // specify the desired width
+                height={50} // specify the desired height
+              />
               <h1 className=" ">
                 {JSON.parse(props.project).briefTitle} -{" "}
                 {JSON.parse(props.project).designProduct}
@@ -62,12 +80,12 @@ function ProjectSingle(props) {
                   <p className="text-xs text-ternary-dark dark:text-ternary-light">
                     {JSON.parse(props.project).category}
                   </p>
+
                   <Image
                     src={arrowRight}
-                    className="cursor-pointer"
-                    alt="Dark Logo"
-                    width={10}
-                    height={10}
+                    alt="Arrow Right Circle"
+                    width={10} // specify the desired width
+                    height={10} // specify the desired height
                   />
                   <p className="text-xs text-ternary-dark dark:text-ternary-light">
                     {JSON.parse(props.project).designProduct}
@@ -94,6 +112,7 @@ function ProjectSingle(props) {
                 className="border dark:border-secondary-dark rounded-2xl cursor-pointer shadow-lg sm:shadow-none w-full h-full object-cover"
                 alt={JSON.parse(props.project).seo.title + "base image"}
                 width={1000}
+                priority
                 height={10}
               />
             </div>
@@ -126,7 +145,7 @@ function ProjectSingle(props) {
                     (highlights, index) => {
                       return (
                         <li key={index} className="flex space-x-1">
-                          <Image src={greenCheck}></Image>
+                          <Image alt={highlights} src={greenCheck} width={16} height={10}></Image>
                           <span>{highlights}</span>
                         </li>
                       );
@@ -153,6 +172,7 @@ function ProjectSingle(props) {
                       index
                     }
                     layout="responsive"
+                    priority
                     width={100}
                     height={90}
                   />
@@ -174,6 +194,8 @@ function ProjectSingle(props) {
             />
           )}
         </div>
+
+        <div className="hidden text-blue-400 my-8 mx-4  space-x-2 py-4 px-4 w-full rounded-2xl space-y-4"></div>
 
         <RelatedProjects />
       </div>

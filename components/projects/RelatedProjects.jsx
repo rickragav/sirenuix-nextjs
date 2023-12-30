@@ -44,6 +44,7 @@ function RelatedProjects() {
 							height="400"
 							alt={project.title}
 							key={project.id}
+							layout="responsive"
 						/>
 					);
 				})}
