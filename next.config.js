@@ -3,5 +3,5 @@ module.exports = {
     domains: ['drive.google.com'],
   },
   reactStrictMode: true,
-  poweredByHeader: false,
+  poweredByHeader: false
 }
